@@ -25,7 +25,7 @@ public class CrudDockerApplication {
     @GetMapping("/users")
     public Iterable<Users> getUsers() {
         Users user = new Users();
-        user.setName("Vannet");
+        user.setName("VannetVeng");
         user.setEmail("vannet.veng@abc1.com.kh");
 
         log.trace(user.toString());

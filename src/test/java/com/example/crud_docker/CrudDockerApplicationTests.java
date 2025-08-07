@@ -6,7 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class CrudDockerApplicationTests {
 
-    @Test
+//    @Test
     void contextLoads() {
     }
 

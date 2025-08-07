@@ -26,7 +26,7 @@ public class CrudDockerApplication {
     public Iterable<Users> getUsers() {
         Users user = new Users();
         user.setName("Vannet");
-        user.setEmail("vannet.veng@abc.com.kh");
+        user.setEmail("vannet.veng@abc1.com.kh");
 
         log.trace(user.toString());
         userRepository.save(user);

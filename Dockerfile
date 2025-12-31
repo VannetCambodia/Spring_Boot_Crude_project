@@ -1,14 +1,18 @@
-# Use a lightweight JDK image
-FROM openjdk:17-jdk-slim
+# ---------- BUILD ----------
+FROM gradle:8.5-jdk17 AS build
+WORKDIR /build
+COPY . .
+RUN gradle clean bootJar --no-daemon
 
-# Set working directory inside the container
+# ---------- RUN ----------
+FROM eclipse-temurin:17-jre
 WORKDIR /app
 
-# Copy the built jar file from your local machine into the container
-COPY build/libs/crud_docker.jar app.jar
+# Security
+RUN useradd -m appuser
+USER appuser
 
-# Expose Spring Boot’s default port
+COPY --from=build /build/build/libs/*.jar app.jar
+
 EXPOSE 8081
-
-# Run the jar file
 ENTRYPOINT ["java", "-jar", "app.jar"]
